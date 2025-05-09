@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Image Test</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+    img { max-width: 300px; margin: 10px; border: 1px solid #ccc; }
+    .error { color: red; }
+    .success { color: green; }
+  </style>
+</head>
+<body>
+  <h1>Image Test Page</h1>
+  <p>This page tests if images are loading correctly from different paths.</p>
+  
+  <h2>Hero Images</h2>
+  <img src="/PayEra/images/hero-image-1.jpg" alt="Hero 1" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/hero-image-2.jpg" alt="Hero 2" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/hero-image-3.jpg" alt="Hero 3" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  
+  <h2>Product Images</h2>
+  <img src="/PayEra/images/payera-a90.jpg" alt="PayEra A90" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/payera-507.jpg" alt="PayEra 507" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  
+  <h2>Other Images</h2>
+  <img src="/PayEra/images/team.jpg" alt="Team" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/support.jpg" alt="Support" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/testimonial-default.jpg" alt="Testimonial" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/business-support.jpg" alt="Business Support" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+  <img src="/PayEra/images/dealership-default.jpg" alt="Dealership" onerror="this.parentNode.innerHTML += '<span class=\'error\'>Failed to load</span>'">
+
+  <script>
+    // Check if images loaded successfully
+    window.addEventListener('load', function() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        if (img.complete && img.naturalHeight !== 0) {
+          // Image loaded successfully
+          const success = document.createElement('span');
+          success.className = 'success';
+          success.textContent = ' ✓ Loaded';
+          img.parentNode.appendChild(success);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
